@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>占</h1>
-<form action = "/uranau" method="POST" modelAttribute="Uranai">
+<form action = "/uranau" method="GET" modelAttribute="Uranai">
 <h2>名前</h2>
 <input type = "text" name="name"/>
 <h2>誕生日</h2>

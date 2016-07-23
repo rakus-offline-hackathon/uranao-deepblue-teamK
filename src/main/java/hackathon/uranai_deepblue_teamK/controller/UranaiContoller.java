@@ -29,9 +29,11 @@ public class UranaiContoller {
         return "input.jsp";
     }
 
-    @RequestMapping(value = "/uranau", method = RequestMethod.POST)
+    @RequestMapping(value = "/uranau", method = RequestMethod.GET)
     public String uranau(@ModelAttribute("Uranai") InputForm inputForm, BindingResult bindingResult){
-    	String imgPath = uranaiService.uranai(inputForm.getName(), convertDate(inputForm.getBirth()));
+        if(bindingResult.hasFieldErrors())
+            System.out.println("UranaiContoller.uranau" + bindingResult.getObjectName());
+        String imgPath = uranaiService.uranai(inputForm.getName(), convertDate(inputForm.getBirth()));
         return "output.jsp";
     }
 
