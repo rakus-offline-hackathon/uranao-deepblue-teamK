@@ -36,7 +36,7 @@ public class UranaiService {
 	public String uranai(String name, String birth){
 		int num = convertToUnicode(name);
 		int num2 = Integer.parseInt(birth);
-		int answer = (num + num2)%27;
+		int answer = (num + num2)%27 + 1;
 		String img = null;
 		if(String.valueOf(answer).length() > 1){
 			img = "/img/0" + answer + ".gif";
