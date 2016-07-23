@@ -3,8 +3,8 @@
         <title>本日の運勢</title>
     </head>
     <body>
-        <h1>本日の運勢</h1>
-        <table border="0">
+        <h1 align="center">本日の運勢</h1>
+        <table border="0" align="center">
             <tr>
                 <td>全体運：</td>
             </tr>
