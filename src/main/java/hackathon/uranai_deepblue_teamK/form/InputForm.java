@@ -1,5 +1,9 @@
 package hackathon.uranai_deepblue_teamK.form;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -7,11 +11,21 @@ import java.util.Date;
  */
 public class InputForm {
 
+    @NotBlank(message = "{name}")
     private String name;
+
+    @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birth;
 
-    public InputForm(String name, Date birth) {
+    public InputForm() {
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 
