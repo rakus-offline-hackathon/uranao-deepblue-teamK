@@ -34,17 +34,10 @@ public class UranaiService {
 		return i;
 	}
 	
-	public String uranai(String name, String birth){
+	public int uranai(String name, String birth, LocalDateTime dateTime){
 		int num = convertToUnicode(name);
 		int num2 = Integer.parseInt(birth);
-		int currentMinutes = LocalDateTime.now().getMinute();
-		int answer = (num + num2 + currentMinutes)%27 + 1;
-		String img = null;
-		if(String.valueOf(answer).length() > 1){
-			img = "/img/0" + answer + ".gif";
-		}else{
-			img = "/img/00" + answer + ".gif";
-		}
-		return img;
+		int currentMinutes = dateTime.getMinute();
+		return (num + num2 + currentMinutes)%27 + 1;
 	}
 }
