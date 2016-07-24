@@ -1,7 +1,7 @@
 package hackathon.uranai_deepblue_teamK.controller;
 
 import hackathon.uranai_deepblue_teamK.form.InputForm;
-import hackathon.uranai_deepblue_teamK.service.ResultCreater;
+import hackathon.uranai_deepblue_teamK.service.ResultCreator;
 import hackathon.uranai_deepblue_teamK.service.UranaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +26,7 @@ public class UranaiContoller {
 	private UranaiService uranaiService;
 
     @Autowired
-    private ResultCreater resultCreater;
+    private ResultCreator resultCreator;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String get(){
@@ -39,8 +39,8 @@ public class UranaiContoller {
             System.out.println("error" + bindingResult.getObjectName());
         LocalDateTime dateTime = LocalDateTime.now();
         int result = uranaiService.uranai(inputForm.getName(), convertDate(inputForm.getBirth()), dateTime);
-        model.addAttribute("img", resultCreater.createImagePath(result));
-        model.addAttribute("starList", resultCreater.createStarResult(result, dateTime));
+        model.addAttribute("img", resultCreator.createImagePath(result));
+        model.addAttribute("starList", resultCreator.createStarResult(result, dateTime));
         return "output";
     }
 
