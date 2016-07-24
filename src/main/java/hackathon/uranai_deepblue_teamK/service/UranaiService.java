@@ -2,6 +2,8 @@ package hackathon.uranai_deepblue_teamK.service;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 
 @Service
 public class UranaiService {
@@ -11,10 +13,9 @@ public class UranaiService {
 	 * @param original
 	 * @return
 	 */
-	private static int convertToUnicode(String original)
+	private int convertToUnicode(String original)
 	{
 		int total = 0;
-	    StringBuilder sb = new StringBuilder();
 	    for (int i = 0; i < original.length(); i++) {
 	    	String str = String.format("\\u%04X", Character.codePointAt(original, i));
 	        total += changeNum(str);
@@ -22,7 +23,7 @@ public class UranaiService {
 	    return total;
 	}
 	
-	private static int changeNum(String num){
+	private int changeNum(String num){
 		
 		int i = 0;
 		try{
@@ -36,7 +37,8 @@ public class UranaiService {
 	public String uranai(String name, String birth){
 		int num = convertToUnicode(name);
 		int num2 = Integer.parseInt(birth);
-		int answer = (num + num2)%27 + 1;
+		int currentMinutes = LocalDateTime.now().getMinute();
+		int answer = (num + num2 + currentMinutes)%27 + 1;
 		String img = null;
 		if(String.valueOf(answer).length() > 1){
 			img = "/img/0" + answer + ".gif";
